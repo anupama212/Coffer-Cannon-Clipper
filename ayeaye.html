@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ayeaye</title>
+    <link href='https://fonts.googleapis.com/css?family=Amarante' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
+</head>
+<style>
+body {
+ text-align: center;
+ background-image: url("https://static.vecteezy.com/system/resources/previews/000/168/133/non_2x/pirate-ship-looking-for-treasure-in-the-cove-free-vector.jpg");
+ background-size: cover;
+ padding: 0 0 25px 0;
+ color: rgb(10, 8, 8);
+}
+img {
+ height: 85px;
+ width: 85px;
+ border-radius: 90px;
+}
+button {
+background-color: thistle;
+border-radius: 100px;
+margin: 5px 0 0 0;
+}
+.score {
+font-weight: bold;
+border-radius: 5px;
+padding: 1px;
+}
+.display{
+font-weight: bold;
+
+border-radius: 50px;
+padding: 15px;
+}
+.Sign{
+font-size: 10px;
+font-weight: bold;
+font-style: italic;
+background-color: blue;
+color: lightblue;
+border-radius: 5px;
+padding: 5px;
+}
+h1 {
+ font-family: Aladin;
+ padding:0 10px 0 10px;
+ font-size: 3rem;
+ 
+}
+p{
+  font-family: Amarante;
+}
+</style>
+<body>
+    <h1>COFFER, CANNON, CLIPPER!</h1>
+    
+    <div class = "display">
+     <p id="scenario">
+    Ahoyyy Mateyy!!!! I am Jack Sparrow. I dare you to win this game of "Coffer,Cannon,Clipper"!! <br>   
+    In our words, coffer means gold and clipper means a fast moving ship, mate! The rules of the game are pretty simple.<br><br>
+    RULES: 
+     <br><br>
+     Coffer defeats Clipper.
+     <br><br>
+
+     Cannon defeats Coffer.
+     <br><br>
+     Clipper defeats Cannon.<br><br>
+     Now, let's play! Whoever gets 10 points first wins the game!
+    </p>
+     <h2 id="winner">Ready..3..2..1..GO!!!!</h2>
+    </div>
+    <button id="q" onclick = "coffer()" >
+    <img src="https://img.icons8.com/cute-clipart/64/000000/treasure-chest.png"/>
+    </button>
+    <button id="p" onclick = "cannon()" >
+    <img src="https://img.icons8.com/plasticine/100/000000/circus-cannon.png"/>
+    </button>
+    <button id="s" onclick = "clipper()" >
+      <img src="https://img.icons8.com/dusk/64/000000/cargo-ship.png"/>
+    </button>
+    <div class = "score">
+        <p id="PS">Your score: 0</p>
+        <p id="CS">Jack's score: 0</p>
+        <p id="TS">Tie: 0</p>
+       </div>
+ <script>
+ // variable for saving choice and scores
+var choice = " ";
+var comChoice = " ";
+var tCounter = 0;
+var cCounter = 0;
+var wCounter = 0;
+// variables for altering text and scores
+var PS = document.getElementById("PS");
+var CS = document.getElementById("CS");
+var TS = document.getElementById("TS");
+var scenario = document.getElementById(
+ "scenario");
+var winner = document.getElementById(
+ "winner");
+// function for computer choice
+function cChoice() {
+ var cChoice = ["q", "p", "s"];
+ return cChoice[Math.floor(Math.random() *
+  3)];
+}
+// function for ties
+function tieUpdate(qps) {
+ if (qps === "q") {
+  tCounter++;
+  scenario.innerHTML =
+   "Both chose Coffer.<br> After few minutes of passive-aggressive name calling and claiming who deserves to keep the gold, we both decide to play again";
+  winner.innerHTML = "It's a Tie!!";
+  TS.innerHTML = "Tie: " + tCounter;
+ } else if (qps === "p") {
+  tCounter++;
+  scenario.innerHTML =
+   "Both chose Cannon.<br> Boom! We die!! Just joking, but the war's begun! let's see who wins!!";
+  winner.innerHTML = "It's a Tie!!";
+  TS.innerHTML = "Tie: " + tCounter;
+ } else if (qps === "s") {
+  tCounter++;
+  scenario.innerHTML =
+   "Both chose Clipper.<br> Both ships approaching towards each other real quick! Hey fella! Steer away..and Let's call it a day! No fun in destroying our awesome ships eyy! Let's give it an another shot,mate!";
+  winner.innerHTML = "It's a Tie!!";
+  TS.innerHTML = "Tie: " + tCounter;
+ }
+};
+// player wins
+function playerUpdate(qps) {
+ if (qps === "q") {
+  wCounter++;
+  scenario.innerHTML =
+   "Aaarggghhh!! I lost my gold! Well played, mate! The treasure is yours!";
+  winner.innerHTML = "You Win!";
+  PS.innerHTML = "'Your score: " +
+   wCounter;
+ } else if (qps === "s") {
+  wCounter++;
+  scenario.innerHTML =
+   "Oh my my!!! Your cannon totally left me shook!!! Here, take your treasure";
+  winner.innerHTML = "You win!";
+  PS.innerHTML = "Your score: " +
+   wCounter;
+ } else if (qps === "p") {
+  wCounter++;
+  scenario.innerHTML =
+   "Ohh mateyy! Your ship is moving too fast!! My cannon missed the shot!";
+  winner.innerHTML = "You win!!";
+  PS.innerHTML = "Your score: " +
+   wCounter;
+ }
+};
+// computer wins
+function comUpdate(qps) {
+ if (qps === "q") {
+  cCounter++;
+  scenario.innerHTML =
+   "I tricked you!! Haha, Your fast moving ship missed the gold!!";
+  winner.innerHTML = "You Lose! Better Luck Next Time!!";
+  CS.innerHTML = "Jack's score: " +
+   cCounter;
+ } else if (qps === "p") {
+  cCounter++;
+  scenario.innerHTML =
+   "OOPS!!!You just got hit by my cannon!! The Treasure is mine!";
+  winner.innerHTML = "You Lose! Better Luck Next Time!!";
+  CS.innerHTML = "Jack's score: " +
+   cCounter;
+ } else if (qps === "s") {
+  cCounter++;
+  scenario.innerHTML =
+   "HAHAHA!!! Your cannon missed the shot!! Sea yaa later,fella!!";
+  winner.innerHTML = "You Lose! Better Luck Next Time!!";
+  CS.innerHTML = "Jack's score: " +
+   cCounter;
+ }
+};
+
+// function for coffer
+function coffer() {
+ choice = "q";
+ comChoice = cChoice();
+ var switchVariable = choice + comChoice;
+ switch (switchVariable) {
+  case "qq":
+   tieUpdate(choice);
+   break;
+  case "qp":
+   comUpdate(comChoice);
+   break;
+  case "qs":
+   playerUpdate(choice);
+   break;
+  default:
+   alert("Something went wrong");
+   break;
+ }
+};
+//function for cannon
+function cannon() {
+ choice = "p";
+ comChoice = cChoice();
+ var switchVariable = choice + comChoice;
+ switch (switchVariable) {
+  case "pp":
+   tieUpdate(choice);
+   break;
+  case "ps":
+   comUpdate(comChoice);
+   break;
+  case "pq":
+   playerUpdate(choice);
+   break;
+  default:
+   alert("Something went wrong");
+   break;
+ }
+};
+//function for clipper
+function clipper() {
+ choice = "s";
+ comChoice = cChoice();
+ var switchVariable = choice + comChoice;
+ switch (switchVariable) {
+  case "ss":
+   tieUpdate(choice);
+   break;
+  case "sq":
+   comUpdate(comChoice);
+   break;
+  case "sp":
+   playerUpdate(choice);
+   break;
+  default:
+   alert("Something went wrong");
+   break;
+ }
+};
+ </script>   
+</body>
+
+</html>
+
