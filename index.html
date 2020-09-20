@@ -57,8 +57,22 @@ p{
 </style>
 <body>
     <h1>COFFER, CANNON, CLIPPER!</h1>
-    
-    <div class = "display">
+   
+    <button id="q" onclick = "coffer()" >
+    <img src="https://img.icons8.com/cute-clipart/64/000000/treasure-chest.png"/>
+    </button>
+    <button id="p" onclick = "cannon()" >
+    <img src="https://img.icons8.com/plasticine/100/000000/circus-cannon.png"/>
+    </button>
+    <button id="s" onclick = "clipper()" >
+      <img src="https://img.icons8.com/dusk/64/000000/cargo-ship.png"/>
+    </button>
+    <div class = "score">
+        <p id="PS">Your score: 0</p>
+        <p id="CS">Jack's score: 0</p>
+        <p id="TS">Tie: 0</p>
+       </div>
+       <div class = "display">
      <p id="scenario">
     Ahoyyy Mateyy!!!! I am Jack Sparrow. I dare you to win this game of "Coffer,Cannon,Clipper"!! <br>   
     In our words, coffer means gold and clipper means a fast moving ship, mate! The rules of the game are pretty simple.<br><br>
@@ -74,20 +88,6 @@ p{
     </p>
      <h2 id="winner">Ready..3..2..1..GO!!!!</h2>
     </div>
-    <button id="q" onclick = "coffer()" >
-    <img src="https://img.icons8.com/cute-clipart/64/000000/treasure-chest.png"/>
-    </button>
-    <button id="p" onclick = "cannon()" >
-    <img src="https://img.icons8.com/plasticine/100/000000/circus-cannon.png"/>
-    </button>
-    <button id="s" onclick = "clipper()" >
-      <img src="https://img.icons8.com/dusk/64/000000/cargo-ship.png"/>
-    </button>
-    <div class = "score">
-        <p id="PS">Your score: 0</p>
-        <p id="CS">Jack's score: 0</p>
-        <p id="TS">Tie: 0</p>
-       </div>
  <script>
  // variable for saving choice and scores
 var choice = " ";
